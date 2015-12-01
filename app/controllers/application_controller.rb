@@ -11,4 +11,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:account_update) << :name
   end
+
+  def after_sign_in_path_for(resource)
+    if resource.class == AdminUser
+      admin_root_path
+    else
+      profile_path
+    end
+  end
+
 end
