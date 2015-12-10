@@ -1,16 +1,19 @@
-<h2>Forgot your password?</h2>
+<div class="container">
+	<h2>Забравена парола?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+	  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+	  <div class="form-group">
+	    <%= f.label :email, "Електронна поща" %>
+	    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+	  </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+	  <%= f.submit "Изпрати ми инструкции за смяна на паролата", class: 'btn btn-primary' %>
 
-<%= render "devise/shared/links" %>
+	<% end %>
+
+	<br>
+
+	<%= render "devise/shared/links" %>
+</div>
