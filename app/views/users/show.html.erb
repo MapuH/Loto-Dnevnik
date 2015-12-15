@@ -1,13 +1,16 @@
-<h1>This is profile page for <%= @user.name %>!</h1>
+<div class="container">
+	<h3>Игрите на <%= @user.name %>:</h3>
 
-<p>Number of records: <%= @records.count %></p>
-<p>List of records:</p>
+	<p>Number of records: <%= @records.count %></p>
+	<p>List of records:</p>
 
-<% @records.each do |record| %>
-<ul>
-	<li><%= record.lottery %></li>
-	<li><%= record.game %></li>
-	<li><%= record.bet %></li>
-	<li><%= record.win %></li>
-</ul>
-<% end %>
+	<% @records.each do |record| %>
+	<ul>
+		<li><%= record.lottery %></li>
+		<li><%= record.game %></li>
+		<li><%= record.bet %></li>
+		<li><%= record.win %></li>
+	</ul>
+	<% end %>
+
+</div>
