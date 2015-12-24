@@ -1,16 +1,42 @@
 <div class="container">
-	<h3>Игрите на <%= @user.name %>:</h3>
+	<h3>Игрите на <%= @user.name %></h3>
 
-	<p>Number of records: <%= @records.count %></p>
-	<p>List of records:</p>
+	<p>Брой игри: <%= @records.count %></p>
+	<p><b>Общ резултат: <span class="<%= @results.sum > 0 ? "text-success" : "text-danger" %>"><%= number_to_currency(@results.sum, unit: "лв.", separator: ",", delimiter: "", format: "%n %u") %></span></b></p>
 
-	<% @records.each do |record| %>
-	<ul>
-		<li><%= record.lottery %></li>
-		<li><%= record.game %></li>
-		<li><%= record.bet %></li>
-		<li><%= record.win %></li>
-	</ul>
-	<% end %>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Дата</th>
+					<th>Лотария</th>
+					<th>Игра</th>
+					<th>Залог</th>
+					<th>Печалба</th>
+					<th>Резултат</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @records.each.with_index(1) do |record, index| %>
+				<tr data-link="<%= show_record_user_path(@user, record_id: record.id) %>" class="<%= result_class(record) %>">
+					<td><%= index %></td>
+					<td><%= record.created_at.strftime("%e.%m.%Y") %></td>
+					<td><%= record.lottery %></td>
+					<td><%= record.game %></td>
+					<td><%= number_to_currency(record.bet, unit: "лв.", separator: ",", delimiter: "", format: "%n %u") %></td>
+					<td><%= number_to_currency(record.win, unit: "лв.", separator: ",", delimiter: "", format: "%n %u") %></td>
+					<td><%= number_to_currency(record.win - record.bet, unit: "лв.", separator: ",", delimiter: "", format: "%n %u") %></td>
+					<td>
+						<%= link_to destroy_record_user_path(@user, record_id: record.id), method: :delete, data: { confirm: "Сигурен ли си?" } do %>
+							<i class='fa fa-close' title='Премахни'></i>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
+	</div>
 
 </div>

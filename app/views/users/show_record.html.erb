@@ -1,0 +1,50 @@
+<div class="container">
+	<h3>Детайли за играта</h3>
+
+	<br>
+
+	<p>Лотария: <%= @record.lottery %></p>
+	<p>Игра: <%= @record.game %></p>
+	<p>Добавена на: <%= @record.created_at.strftime("%e.%m.%Y") %></p>
+	<p>Последно обновяване: <%= @record.updated_at.strftime("%e.%m.%Y") %></p>
+	<p>Залог: <%= number_to_currency(@record.bet, unit: "лв.", separator: ",", delimiter: "", format: "%n %u") %></p>
+	<p>Печалба: <%= number_to_currency(@record.win, unit: "лв.", separator: ",", delimiter: "", format: "%n %u") %></p>
+	<p><b>Резултат: <span class="text-<%= result_class(@record)%>"><%= number_to_currency(@record.win - @record.bet, unit: "лв.", separator: ",", delimiter: "", format: "%n %u") %></span></b></p>
+
+	<div class="row">
+	    <p class="bs-component">
+	    	<%= link_to :back, class: "btn btn-primary" do %>
+	    		<i class='fa fa-arrow-circle-o-left'></i> Назад
+	    	<% end %>
+
+	    	<a class="btn btn-primary" data-toggle="modal" data-target="#edit_record"><i class='fa fa-edit'></i> Редактирай</a>
+
+	    	<%= link_to destroy_record_user_path(@user, record_id: @record.id), method: :delete, data: { confirm: "Сигурен ли си?" }, class: "btn btn-primary" do %>
+	    		<i class='fa fa-trash-o'></i> Изтриване
+	    	<% end %>
+	    </p>
+    </div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="edit_record" role="dialog">
+	  <div class="modal-dialog">
+	    
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Редактирай игра</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Some text in the modal.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Затвори</button>
+	      </div>
+	    </div>
+	      
+	  </div>
+	</div>
+
+
+</div>

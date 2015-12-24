@@ -5,6 +5,14 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'welcome#index'
 
+  resources :users do
+    member do
+      get 'show_record'
+      patch 'update_record'
+      delete 'destroy_record'
+    end
+  end
+
   get 'profile' => 'users#show', as: :profile
 
   # The priority is based upon order of creation: first created -> highest priority.
