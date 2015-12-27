@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'show_record'
+      post 'create_record'
       patch 'update_record'
       delete 'destroy_record'
     end
