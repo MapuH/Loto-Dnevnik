@@ -1,0 +1,19 @@
+html, body {
+  min-height: 100%;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  padding-top: 10px;
+  color: #fff;
+  background-color: #2780e3;
+  border-color: #1967be;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}

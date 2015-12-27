@@ -1,3 +1,7 @@
+<% content_for :head do %>
+	<title>Лото дневник на <%= @user.name %></title>
+<% end %>
+
 <div class="container">
 	<h3>Игрите на <%= @user.name %></h3>
 
@@ -39,7 +43,17 @@
 		</table>
 	</div>
 
-	<a class="btn btn-primary" data-toggle="modal" data-target="#add_record"><i class='fa fa-plus'></i> Добави запис</a>
+	<div class="row">
+		<div class="col-sm-12 text-center">
+		<a class="btn btn-primary" data-toggle="modal" data-target="#add_record"><i class='fa fa-plus'></i> Добави запис</a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12 text-center">
+			<%= image_tag 'profile_img.jpeg' %>
+		</div>
+	</div>
 
 	<!-- Modal -->
 	<div class="modal fade" id="add_record" role="dialog">

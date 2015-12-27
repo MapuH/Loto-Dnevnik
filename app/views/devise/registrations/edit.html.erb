@@ -1,47 +1,62 @@
 <div class="container">
-  <h2>Редактирай профила</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= devise_error_messages! %>
+  <div class="col-sm-6 text-center">
+    <%= image_tag 'edit_user_img.jpg' %>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :name, "Име" %>
-      <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-    </div>
+  <div class="col-sm-6">
+    <h2>Редактирай профила</h2>
 
-    <div class="form-group">
-      <%= f.label :email, "Електронна поща" %>
-      <%= f.email_field :email, class: 'form-control' %>
-    </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>В момента се чака потвърждение за: <%= resource.unconfirmed_email %></div>
+      <div class="form-group">
+        <%= f.label :name, "Име" %>
+        <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, "Електронна поща" %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>В момента се чака потвърждение за: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :password, "Нова парола" %>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+        <span class="help-block">Остави празно, ако не искаш да променяш паролата</span>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Потвърди новата парола" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password, "Текуща парола" %>
+        <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+        <span class="help-block">Въведи текущата си парола, за да направиш промените</span>
+      </div>
+
+      <%= f.submit "Редактирай", class: 'btn btn-primary' %>
+
     <% end %>
 
-    <div class="form-group">
-      <%= f.label :password, "Нова парола" %>
-      <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-      <span class="help-block">Остави празно, ако не искаш да променяш паролата</span>
-    </div>
+    <h3>Изтриване на профила</h3>
 
-    <div class="form-group">
-      <%= f.label :password_confirmation, "Потвърди новата парола" %>
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-    </div>
+    <p>Ако лото дневникът не ти харесва, може да изтриеш профила си. <%= button_to "Изтриване", registration_path(resource_name), data: { confirm: "Сигурен ли си? Цялата информация за профила ще бъде изтрита!" }, method: :delete %></p>
 
-    <div class="form-group">
-      <%= f.label :current_password, "Текуща парола" %>
-      <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
-      <span class="help-block">Въведи текущата си парола, за да направиш промените</span>
-    </div>
+  </div>
 
-    <%= f.submit "Редактирай", class: 'btn btn-primary' %>
-
-  <% end %>
-
-  <h3>Изтриване на профила</h3>
-
-  <p>Ако лото дневникът не ти харесва, може да изтриеш профила си. <%= button_to "Изтриване", registration_path(resource_name), data: { confirm: "Сигурен ли си? Цялата информация за профила ще бъде изтрита!" }, method: :delete %></p>
-
-  <%= link_to "Назад", :back %>
 </div>
+
+<% content_for :footer do %>
+  <footer style="position: relative;">
+  <div class="container">
+    <p class="text-center">Лото дневник 2015 &ndash; <a href="https://github.com/MapuH/Loto-Dnevnik" target="_blank"><i class="fa fa-github"></i> GitHub repo</p></a>
+  </div>
+  </footer>
+<% end %>
