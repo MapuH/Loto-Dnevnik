@@ -51,7 +51,7 @@
 
 	<div class="row">
 		<div class="col-sm-12 text-center">
-			<%= image_tag 'profile_img.jpeg' %>
+			<%= image_tag 'profile_img.jpg' %>
 		</div>
 	</div>
 
@@ -85,6 +85,7 @@
 	        	<div class="form-group">
 	        	<%= f.label :win, "Печалба" %>
 	        	<%= f.number_field :win, { in: 0...1000000, step: 0.01, class: 'form-control', required: true } %>
+	        		<span class="help-block">Ако залогът не е печеливш, въведи 0</span>
 	        	</div>	        	
 	        <% end %>
 	      </div>

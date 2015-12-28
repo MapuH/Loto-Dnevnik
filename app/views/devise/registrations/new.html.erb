@@ -1,37 +1,46 @@
 <div class="container">
-  <h2>Регистрация</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+  <div class="col-sm-6">
+    <%= image_tag 'register.png', class: 'image-responsive' %>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :name, "Име" %>
-      <%= f.text_field :name, class: 'form-control' %>
-    </div>
+  <div class="col-sm-6">
+    <h2>Регистрация</h2>
 
-    <div class="form-group">
-      <%= f.label :email, "Електронна поща" %>
-      <%= f.email_field :email, class: 'form-control' %>
-    </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-    <div class="form-group">
-      <%= f.label :password, "Парола" %>
-      <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-      <% if @minimum_password_length %>
-        <span class="help-block">Минимум <%= @minimum_password_length %> символа</span>
-      <% end %>
-    </div>
+      <div class="form-group">
+        <%= f.label :name, "Име" %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :password_confirmation, "Повтори паролата" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :email, "Електронна поща" %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
 
-    <%= f.submit "Регистрирай се", class: 'btn btn-primary' %>
+      <div class="form-group">
+        <%= f.label :password, "Парола" %>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+        <% if @minimum_password_length %>
+          <span class="help-block">Минимум <%= @minimum_password_length %> символа</span>
+        <% end %>
+      </div>
 
-  <% end %>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Повтори паролата" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+      </div>
 
-  <br>
+      <%= f.submit "Регистрирай се", class: 'btn btn-primary' %>
 
-  <%= render "devise/shared/links" %>
+    <% end %>
+
+    <br>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
+
 </div>

@@ -32,7 +32,7 @@
     </div>
 
     <div class="col-sm-6 text-center">
-    	<%= image_tag 'edit_record_img.jpeg', class: "img-responsive" %>
+    	<%= image_tag 'edit_record_img.jpeg', class: 'img-responsive' %>
     </div>
 
 	<!-- Modal -->
@@ -65,6 +65,7 @@
 	        	<div class="form-group">
 	        	<%= f.label :win, "Печалба" %>
 	        	<%= f.number_field :win, { in: 0...1000000, step: 0.01, class: 'form-control', required: true } %>
+	        		<span class="help-block">Ако залогът не е печеливш, въведи 0</span>
 	        	</div>	        	
 	        <% end %>
 	      </div>
