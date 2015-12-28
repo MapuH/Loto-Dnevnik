@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p>Здравейте, <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>За да потвърдите регистрацията си в Лото дневник, кликнете на линка долу:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'Потвърждавам регистрацията', confirmation_url(@resource, confirmation_token: @token) %></p>
